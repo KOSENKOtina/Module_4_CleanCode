@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prettier:write": "prettier --write ."
   },
   "author": {
     "name": "Sniazhana Matskevich"
@@ -16,7 +17,9 @@
     "npm": ">=3.10.8"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.17.0",
     "mocha": "^6.2.0",
-    "chai": "^4.2.0"
+    "prettier": "^2.2.1"
   }
 }
