@@ -2,7 +2,7 @@ const Airport = require('./Airport/Airport');
 const { MilitaryPlane, ExperimentalPlane, PassengerPlane } = require('./Planes');
 const { MilitaryTypes, ExperimentalTypes, ClassificationLevel } = require('./models');
 
-(function run() {
+function run() {
   let planes = [
     new PassengerPlane('Boeing-737', 900, 12000, 60500, 164),
     new PassengerPlane('Boeing-737-800', 940, 12300, 63870, 192),
@@ -36,4 +36,5 @@ const { MilitaryTypes, ExperimentalTypes, ClassificationLevel } = require('./mod
       passengerAirport.getPassengerPlaneWithMaxPassengersCapacity()
     )}`
   );
-})();
+}
+run();
