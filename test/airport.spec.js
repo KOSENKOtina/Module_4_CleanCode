@@ -1,6 +1,12 @@
 const assert = require('chai').assert;
 const Airport = require('../Airport/Airport');
 const { MilitaryPlane, PassengerPlane, ExperimentalPlane } = require('../Planes');
+const {
+  hasAnyTransportPlanes,
+  checkMaximumCapacitySorting,
+  hasAnyBomberPlanes,
+  hasUnclassifiedPlanes,
+} = require('./helpers/helperFuncs');
 const { MilitaryTypes, ExperimentalTypes, ClassificationLevel } = require('../models');
 
 describe('Airport facility', () => {
@@ -32,11 +38,11 @@ describe('Airport facility', () => {
   it('should find passenger plane with max capacity', () => {
     const expectedPlaneWithMaxPassengerCapacity = new PassengerPlane('Boeing-747', 980, 16100, 70500, 242);
     let actualPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-    assert.isTrue(actualPlaneWithMaxPassengersCapacity.isEqualTo(expectedPlaneWithMaxPassengerCapacity));
+    assert.deepEqual(actualPlaneWithMaxPassengersCapacity, expectedPlaneWithMaxPassengerCapacity);
   });
 
   it('should sort planes by Maximum Capacity from less till more', () => {
-    airport.sortByMaxLoadCapacity();
+    airport.sortPlanesByMaxLoadCapacity();
     const planesSortedByMaxLoadCapacity = airport.planes;
     assert.isTrue(checkMaximumCapacitySorting(planesSortedByMaxLoadCapacity));
   });
@@ -47,51 +53,7 @@ describe('Airport facility', () => {
   });
 
   it('should check that experimental planes has classification level higher than unclassified', () => {
-    let experimentalPlanes = airport.getPlanesByPurpose('Experimental');
+    let experimentalPlanes = airport.getPlanesByCategory('Experimental');
     assert.isFalse(hasUnclassifiedPlanes(experimentalPlanes));
   });
 });
-
-function hasAnyTransportPlanes(arrayToCheck) {
-  let hasAnyTransportPlanes = false;
-  for (let militaryPlane of arrayToCheck) {
-    if (militaryPlane.militaryType === MilitaryTypes.TRANSPORT) {
-      hasAnyTransportPlanes = true;
-      break;
-    }
-  }
-  return hasAnyTransportPlanes;
-}
-
-function checkMaximumCapacitySorting(arrayToCheck) {
-  let isNextHigher = true;
-  for (let i = 0; i < arrayToCheck.length - 1; i++) {
-    let currentPlane = arrayToCheck[i];
-    let nextPlane = arrayToCheck[i + 1];
-    if (currentPlane.maxLoadCapacity > nextPlane.maxLoadCapacity) {
-      isNextHigher = false;
-      break;
-    }
-  }
-  return isNextHigher;
-}
-
-function hasAnyBomberPlanes(arrayToCheck) {
-  let flag = false;
-  for (let militaryPlane of arrayToCheck) {
-    if (militaryPlane.militaryType === MilitaryTypes.BOMBER) {
-      flag = true;
-    }
-    return flag;
-  }
-}
-
-function hasUnclassifiedPlanes(arrayToCheck) {
-  let hasUnclassifiedPlanes = false;
-  for (let plane of arrayToCheck) {
-    if (plane.classificationLevel === ClassificationLevel.UNCLASSIFIED) {
-      hasUnclassifiedPlanes = true;
-    }
-    return hasUnclassifiedPlanes;
-  }
-}

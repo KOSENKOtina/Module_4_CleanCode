@@ -23,11 +23,17 @@ const { MilitaryTypes, ExperimentalTypes, ClassificationLevel } = require('./mod
   ];
 
   let airport = new Airport(planes);
-  let militaryAirport = new Airport(airport.getPlanesByPurpose('Military'));
-  let passengerAirport = new Airport(airport.getPlanesByPurpose('Passenger'));
-  console.log(`Military airport sorted by max distance: ${Airport.print(militaryAirport.sortByMaxDistance())}`);
-  console.log(`Passenger airport sorted by max speed: ${Airport.print(passengerAirport.sortByMaxSpeed())}`);
+  let militaryAirport = new Airport(airport.getPlanesByCategory('Military'));
+  let passengerAirport = new Airport(airport.getPlanesByCategory('Passenger'));
   console.log(
-    `Plane with max passenger capacity: ${Airport.print(passengerAirport.getPassengerPlaneWithMaxPassengersCapacity())}`
+    `Military airport sorted by max distance: ${Airport.stringifyPlanes(militaryAirport.sortPlanesByMaxDistance())}`
+  );
+  console.log(
+    `Passenger airport sorted by max speed: ${Airport.stringifyPlanes(passengerAirport.sortPlanesByMaxSpeed())}`
+  );
+  console.log(
+    `Plane with max passenger capacity: ${Airport.stringifyPlanes(
+      passengerAirport.getPassengerPlaneWithMaxPassengersCapacity()
+    )}`
   );
 })();

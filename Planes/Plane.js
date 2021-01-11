@@ -21,15 +21,6 @@ class Plane {
   get maxLoadCapacity() {
     return this._maxLoadCapacity;
   }
-
-  isEqualTo(otherPlane) {
-    return (
-      this.model == otherPlane.model &&
-      this.maxSpeed == otherPlane.maxSpeed &&
-      this.maxFlightDistance == otherPlane.maxFlightDistance &&
-      this.maxLoadCapacity == otherPlane.maxLoadCapacity
-    );
-  }
 }
 
 module.exports = Plane;

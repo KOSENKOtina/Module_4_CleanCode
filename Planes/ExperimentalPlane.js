@@ -13,13 +13,6 @@ class ExperimentalPlane extends Plane {
   get classificationLevel() {
     return this._classificationLevel;
   }
-  isEqualTo(otherPlane) {
-    return (
-      super.isEqualTo(otherPlane) &&
-      this.type == otherPlane.type &&
-      this.classificationLevel == otherPlane.classificationLevel
-    );
-  }
 }
 
 module.exports = ExperimentalPlane;

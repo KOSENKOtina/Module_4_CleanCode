@@ -9,9 +9,6 @@ class PassengerPlane extends Plane {
   get passengersCapacity() {
     return this._passengersCapacity;
   }
-  isEqualTo(otherPlane) {
-    return super.isEqualTo(otherPlane) && this.passengersCapacity == otherPlane.passengersCapacity;
-  }
 }
 
 module.exports = PassengerPlane;
