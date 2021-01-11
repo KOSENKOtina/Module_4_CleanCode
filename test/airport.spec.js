@@ -1,12 +1,7 @@
 const assert = require('chai').assert;
 const Airport = require('../Airport/Airport');
 const { MilitaryPlane, PassengerPlane, ExperimentalPlane } = require('../Planes');
-const {
-  hasAnyTransportPlanes,
-  checkMaximumCapacitySorting,
-  hasAnyBomberPlanes,
-  hasUnclassifiedPlanes,
-} = require('./helpers/helperFuncs');
+const { hasAnyTransportPlanes, checkMaximumCapacitySorting, hasUnclassifiedPlanes } = require('./helpers/helperFuncs');
 const { MilitaryTypes, ExperimentalTypes, ClassificationLevel } = require('../models');
 
 describe('Airport facility', () => {
@@ -49,7 +44,7 @@ describe('Airport facility', () => {
 
   it(`should have at least one ${MilitaryTypes.BOMBER} military plane`, () => {
     let bomberMilitaryPlanes = airport.getMilitaryPlanesByType(MilitaryTypes.BOMBER);
-    assert.isTrue(hasAnyBomberPlanes(bomberMilitaryPlanes));
+    assert.isNotEmpty(bomberMilitaryPlanes);
   });
 
   it('should check that experimental planes has classification level higher than unclassified', () => {

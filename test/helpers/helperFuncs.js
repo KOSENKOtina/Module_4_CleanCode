@@ -24,29 +24,18 @@ function checkMaximumCapacitySorting(arrayToCheck) {
   return isNextHigher;
 }
 
-function hasAnyBomberPlanes(arrayToCheck) {
-  let flag = false;
-  for (let militaryPlane of arrayToCheck) {
-    if (militaryPlane.militaryType === MilitaryTypes.BOMBER) {
-      flag = true;
-    }
-    return flag;
-  }
-}
-
 function hasUnclassifiedPlanes(arrayToCheck) {
   let hasUnclassifiedPlanes = false;
   for (let plane of arrayToCheck) {
     if (plane.classificationLevel === ClassificationLevel.UNCLASSIFIED) {
       hasUnclassifiedPlanes = true;
     }
-    return hasUnclassifiedPlanes;
   }
+  return hasUnclassifiedPlanes;
 }
 
 module.exports = {
   hasAnyTransportPlanes,
   checkMaximumCapacitySorting,
-  hasAnyBomberPlanes,
   hasUnclassifiedPlanes,
 };
