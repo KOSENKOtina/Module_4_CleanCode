@@ -1,10 +1,10 @@
 const Plane = require('./Plane');
 
 class ExperimentalPlane extends Plane {
-  constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity, type, classificationLevel) {
-    super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-    this._type = type;
-    this._classificationLevel = classificationLevel;
+  constructor(experimentalPlaneParamsObj) {
+    super(experimentalPlaneParamsObj);
+    this._type = experimentalPlaneParamsObj.type;
+    this._classificationLevel = experimentalPlaneParamsObj.classificationLevel;
   }
   get type() {
     return this._type;

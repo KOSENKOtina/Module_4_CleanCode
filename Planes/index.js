@@ -7,5 +7,5 @@ module.exports = {
   Plane,
   ExperimentalPlane,
   MilitaryPlane,
-  PassengerPlane,
+  PassengerPlane
 };

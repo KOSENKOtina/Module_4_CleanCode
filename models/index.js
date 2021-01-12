@@ -5,5 +5,5 @@ const ExperimentalTypes = require('./ExperimentalTypes');
 module.exports = {
   MilitaryTypes,
   ClassificationLevel,
-  ExperimentalTypes,
+  ExperimentalTypes
 };

@@ -1,7 +1,7 @@
 const MilitaryTypes = {
   FIGHTER: 'Fighter',
   BOMBER: 'Bomber',
-  TRANSPORT: 'Transport',
+  TRANSPORT: 'Transport'
 };
 
 module.exports = MilitaryTypes;

@@ -1,15 +1,4 @@
-const { MilitaryTypes, ClassificationLevel } = require('../../models');
-
-function hasAnyTransportPlanes(arrayToCheck) {
-  let hasAnyTransportPlanes = false;
-  for (let militaryPlane of arrayToCheck) {
-    if (militaryPlane.militaryType === MilitaryTypes.TRANSPORT) {
-      hasAnyTransportPlanes = true;
-      break;
-    }
-  }
-  return hasAnyTransportPlanes;
-}
+const { ClassificationLevel } = require('../../models');
 
 function checkMaximumCapacitySorting(arrayToCheck) {
   let isNextHigher = true;
@@ -25,17 +14,10 @@ function checkMaximumCapacitySorting(arrayToCheck) {
 }
 
 function hasUnclassifiedPlanes(arrayToCheck) {
-  let hasUnclassifiedPlanes = false;
-  for (let plane of arrayToCheck) {
-    if (plane.classificationLevel === ClassificationLevel.UNCLASSIFIED) {
-      hasUnclassifiedPlanes = true;
-    }
-  }
-  return hasUnclassifiedPlanes;
+  return arrayToCheck.some((plane) => plane.classificationLevel === ClassificationLevel.UNCLASSIFIED);
 }
 
 module.exports = {
-  hasAnyTransportPlanes,
   checkMaximumCapacitySorting,
-  hasUnclassifiedPlanes,
+  hasUnclassifiedPlanes
 };
