@@ -22,7 +22,7 @@ class Airport {
     return this.planes.filter((plane) => plane instanceof category);
   }
 
-  getMilitaryPlanesByType(type) {
+  getPlanesByMilitaryType(type) {
     let militaryPlanes = this.getPlanesByCategory(MilitaryPlane);
     return militaryPlanes.filter((plane) => plane.militaryType == type);
   }

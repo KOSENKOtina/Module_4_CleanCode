@@ -9,7 +9,7 @@ describe('Airport facility', () => {
   const airport = new Airport(planes);
 
   it('should have military Planes of transport type', () => {
-    const transportMilitaryPlanes = airport.getMilitaryPlanesByType(MilitaryTypes.BOMBER);
+    const transportMilitaryPlanes = airport.getPlanesByMilitaryType(MilitaryTypes.BOMBER);
     assert.isNotEmpty(transportMilitaryPlanes);
   });
 
@@ -32,7 +32,7 @@ describe('Airport facility', () => {
   });
 
   it(`should have at least one ${MilitaryTypes.BOMBER} military plane`, () => {
-    let bomberMilitaryPlanes = airport.getMilitaryPlanesByType(MilitaryTypes.BOMBER);
+    let bomberMilitaryPlanes = airport.getPlanesByMilitaryType(MilitaryTypes.BOMBER);
     assert.isNotEmpty(bomberMilitaryPlanes);
   });
 
