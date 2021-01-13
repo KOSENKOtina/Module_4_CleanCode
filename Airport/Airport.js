@@ -9,10 +9,6 @@ class Airport {
     return this._planes;
   }
 
-  static stringifyPlanes(planes) {
-    return JSON.stringify(planes);
-  }
-
   sortPlanesByProperty(property) {
     this.planes.sort((a, b) => (a[property] > b[property] ? 1 : -1));
     return this;
